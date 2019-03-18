@@ -7,4 +7,8 @@ def index(request):
     return render(request, 'webapp/home.html')
 
 def contact(request):
-    return render(request, 'webapp/basic.html', {'content': ['hey reach me', '@ 8095179891']})
+    return render(request, 'webapp/basic.html', {'content': ['contact #########']})
+
+
+def log_out(request):
+    return render(request,'webapp/templates/registration/log_out.html')
