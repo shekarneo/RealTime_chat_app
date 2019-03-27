@@ -11,4 +11,5 @@ def contact(request):
 
 
 def log_out(request):
-    return render(request,'webapp/templates/registration/log_out.html')
+
+    return render(request, 'registration/log_out.html')

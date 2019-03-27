@@ -1,9 +1,7 @@
 {% extends "webapp/header.html" %}
 
 {% block content %}
-<form method="post" action="{% url 'login' %}">
+    <p> logged out </p>
+    <p><a href="{% url 'login' %}">Login again</a></p>
 
-    <p><a href="{% url '/accounts/logout/' %}">Login again</a></p>
-
-</form>
 {% endblock %}
