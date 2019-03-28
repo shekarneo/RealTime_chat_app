@@ -24,5 +24,6 @@ urlpatterns = [
     path('contact/', views.contact, name="contact"),
     #path('blog/', views., name="contact"),
     path('accounts/', include('django.contrib.auth.urls')),
+    path("register/", views.register, name="register"),
     path('accounts/logout/', views.log_out, name="logout")
 ]
