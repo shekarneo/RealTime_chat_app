@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'WebApp.apps.WebappConfig',
     'blog.apps.BlogConfig',
     'tinymce',
+    'crispy_forms',
 
 ]
 
@@ -129,9 +130,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = '/'
-#LOGIN_REDIRECT_URL = '/accounts/login/'
-
-
+LOGIN_URL = 'login'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_URL = '/media/'
 
 #tinymce goes here
 
@@ -163,3 +164,7 @@ TINYMCE_DEFAULT_CONFIG = {
     'menubar': True,
     'statusbar': True,
     }
+
+#crispy_form settings
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

@@ -5,7 +5,7 @@
 	<title>Welcome</title>
 	<meta charset="utf-8" />
 	{% load staticfiles %}
-	<link rel="stylesheet" href="{% static 'webapp/css/bootstrap-grid.css' %}" type = "text/css"/>
+	<link rel="stylesheet" href="{% static 'webapp/css/bootstrap.min.css' %}" type = "text/css"/>
 	<meta name="viewport" content = "width=device-width, initial-scale=1.0">
 
 	<style type="text/css">
@@ -17,19 +17,36 @@
 </head>
 
 <body class="body" style="background-color:#f6f6f6">
-	<div class="container-fluid" style="min-height:95%; ">
+
+
+
+	<div class="container-fluid" style="min-height:50%; ">
 		<div class="row">
 			  <div class="col-sm-2">
 				  <br>
 				  <center>
-					<img src="{% static 'webapp/img/profile.jpg' %}" class="responsive-img" style='max-height:100px;' alt="face">
+					<img src="{% static 'webapp/img/profile.jpg' %}" class="responsive-img" style='max-height:100px;' alt="image">
 				  </center>
 			  </div>
-			  <div class="col-sm-10">
-				  <br>
-				  <center>
-				  <h3> Hello All This app is still WIP </h3>
-				  </center>
+			  <div class="col-sm-11">
+
+                  <!--<div class="well bs-sidebar affix" id="sidebar" style="background-color:#fff">-->
+			<div  style="background-color:#fff">
+                <center>
+				<a href='/'>Home</a>
+				<a href='/admin/'>Admin</a>
+				<a href='/blog/'>Blog</a>
+
+             {% if user.is_authenticated %}
+                <a href='/logout'>Logout</a>
+                  <a href='/profile'>Profile</a>
+             {% else %}
+                <a href='/login'>Login</a>
+				<a href='/register/'>register</a>
+             {% endif %}
+
+			  </center>
+			</div> <!--well bs-sidebar affix-->
 			  </div>
 		</div><hr>
 
@@ -39,39 +56,39 @@
 
 		  <br>
 		   <!-- Great, til you resize. -->
-			<!--<div class="well bs-sidebar affix" id="sidebar" style="background-color:#fff">-->
-			<div class="well bs-sidebar" id="sidebar" style="background-color:#fff">
-			  <ul class="nav nav-pills nav-stacked">
-				<li><a href='/'>|Home|</a></li>
-				<li><a href='/admin'>|Admin|</a></li>
-				<li><a href='/accounts/login'>|Account|</a></li>
-				<li><a href='/blog/'>|Blog|</a></li>
-				<li><a href='/cart/'>|Cart|</a></li>
-				<li><a href='/contact/'>|Contact|</a></li>
-			  </ul>
-			</div> <!--well bs-sidebar affix-->
+
 		  </div> <!--col-sm-2-->
-		  <div class="col-sm-10">
+		  <div class="col-sm-50">
 
 			<div class='container-fluid'>
 			<br><br>
+
+            {% if messages %}
+              {% for msg in messages %}
+            <div class ="alert alert-{{ msg.tag }}">
+                {{ msg }}
+            </div>
+               {% endfor %}
+                {% endif %}
+
 			   {% block content %}
 			   {% endblock %}
 			</div>
 		  </div>
 		</div>
 	</div>
-	<footer>
-		<div class="container-fluid" style='margin-left:15px'>
+	<br><hr>
+    <br>
+    <br>
+    <footer>
+		<div class="container-fluid" style='margin-left:300px'>
 			<p><a href='/contact/'>Contact@whatsapp</a> | <a href="https://github.com/django-webapp/webapp" target="blank">GitHub</a> | <a href="#" target="blank">LinkedIN</a> | <a href="#" target="blank">Google+</a>
-			| <a href="mailto:someone@gmail.com" target="blank">webapp@support.com</a></p>
+                | <a href="mailto:someone@gmail.com" target="blank">webapp@support.com</a></p>
+
 		</div>
 	</footer>
-
+<hr>
 </body>
 
 </html>
 
-{% if user.is_authenticated %}
-    <p><a href='/log_out'>Logout</a></p>
-{%  endif %}
