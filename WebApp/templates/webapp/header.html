@@ -4,61 +4,108 @@
 <head>
 	<title>Welcome</title>
 	<meta charset="utf-8" />
-	{% load staticfiles %}
-	<link rel="stylesheet" href="{% static 'webapp/css/bootstrap.min.css' %}" type = "text/css"/>
-	<meta name="viewport" content = "width=device-width, initial-scale=1.0">
+    {% load staticfiles %}
+    <link rel="shortcut icon" href="{% static 'webapp/img/favicon.ico' %}" type="image/x-icon" />
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 
+<meta name="viewport" content = "width=device-width, initial-scale=1.0">
 	<style type="text/css">
 		html,
-		body {
-		  height:100%
-		}
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+  width: 100%;
+  background-color: #555;
+  overflow: auto;
+}
+
+.navbar a {
+  float: left;
+  padding: 4px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background-color: #000;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+
+
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+  }
+}
+
+	 .social:hover {
+     -webkit-transform: scale(1.1);
+     -moz-transform: scale(1.1);
+     -o-transform: scale(1.1);
+ }
+ .social {
+     -webkit-transform: scale(0.8);
+     /* Browser Variations: */
+
+     -moz-transform: scale(0.8);
+     -o-transform: scale(0.8);
+     -webkit-transition-duration: 0.5s;
+     -moz-transition-duration: 0.5s;
+     -o-transition-duration: 0.5s;
+ }
+
+/*
+    Multicoloured Hover Variations
+*/
+
+ #social-fb:hover {
+     color: #3B5998;
+ }
+ #social-tw:hover {
+     color: #4099FF;
+ }
+ #social-gp:hover {
+     color: #d34836;
+ }
+ #social-em:hover {
+     color: #f39c12;
+ }
 	</style>
 </head>
 
-<body class="body" style="background-color:#f6f6f6">
 
 
 
-	<div class="container-fluid" style="min-height:50%; ">
-		<div class="row">
-			  <div class="col-sm-2">
-				  <br>
-				  <center>
-					<img src="{% static 'webapp/img/profile.jpg' %}" class="responsive-img" style='max-height:100px;' alt="image">
-				  </center>
-			  </div>
-			  <div class="col-sm-11">
-
-                  <!--<div class="well bs-sidebar affix" id="sidebar" style="background-color:#fff">-->
-			<div  style="background-color:#fff">
-                <center>
-				<a href='/'>Home</a>
-				<a href='/admin/'>Admin</a>
-				<a href='/blog/'>Blog</a>
-
-             {% if user.is_authenticated %}
-                <a href='/logout'>Logout</a>
-                  <a href='/profile'>Profile</a>
-             {% else %}
-                <a href='/login'>Login</a>
-				<a href='/register/'>register</a>
-             {% endif %}
-
-			  </center>
-			</div> <!--well bs-sidebar affix-->
-			  </div>
-		</div><hr>
-
-		<div class="row">
-		  <div class="col-sm-2">
-		  <br>
-
-		  <br>
 		   <!-- Great, til you resize. -->
 
-		  </div> <!--col-sm-2-->
-		  <div class="col-sm-50">
+<div class="navbar" >
+			    <a class="active" href='/'><i class="fa fa-fw fa-home"></i>Home</a>
+				<a href='/admin/'>Admin</a>
+				<a href='/blog/'><i class="fa fa-book" ></i>Blog</a>
+                <a href="#"><i class="fa fa-fw fa-search"></i> Search</a>
+             {% if user.is_authenticated %}
+                <a href='/logout/'><i class="fa fa-sign-out"></i>Logout</a>
+                  <a href='/profile/'><i class="fa fa-fw fa-user"></i>Profile</a>
+             {% else %}
+                <a href='/login/'><i class="fa fa-sign-in" ></i>Login</a>
+				<a href='/register/'><i class="fa fa-sign-in"></i>register</a>
+             {% endif %}
+
+			  </div>
+
+<div class="col-sm-50">
 
 			<div class='container-fluid'>
 			<br><br>
@@ -75,19 +122,25 @@
 			   {% endblock %}
 			</div>
 		  </div>
-		</div>
-	</div>
-	<br><hr>
-    <br>
-    <br>
-    <footer>
-		<div class="container-fluid" style='margin-left:300px'>
-			<p><a href='/contact/'>Contact@whatsapp</a> | <a href="https://github.com/django-webapp/webapp" target="blank">GitHub</a> | <a href="#" target="blank">LinkedIN</a> | <a href="#" target="blank">Google+</a>
-                | <a href="mailto:someone@gmail.com" target="blank">webapp@support.com</a></p>
 
-		</div>
-	</footer>
-<hr>
+
+
+<footer class="footer">
+<div class="container">
+
+    <hr>
+        <div class="text-center center-block">
+            <p class="txt-railway">shekar neo</p>
+            <br />
+                <a href="https://www.facebook.com/bootsnipp"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
+	            <a href="https://twitter.com/bootsnipp"><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a>
+	            <a href="https://plus.google.com/+Bootsnipp-page"><i id="social-gp" class="fa fa-google-plus-square fa-3x social"></i></a>
+	            <a href="mailto:bootsnipp@gmail.com"><i id="social-em" class="fa fa-envelope-square fa-3x social"></i></a>
+</div>
+    <hr>
+</div>
+</footer>
+
 </body>
 
 </html>
