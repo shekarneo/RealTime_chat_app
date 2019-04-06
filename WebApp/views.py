@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
-from .forms import UserRegisterForm #UserUpdateForm, ProfileUpdateForm
+from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
 
 #create your views here
@@ -39,14 +39,32 @@ def register(request):
 
 @login_required
 def profile(request):
- #   u_form = UserUpdateForm()
-  #  p_form = ProfileUpdateForm()
+    return render(request,
+                  'registration/profile.html'
+                  )
 
-   # context = {
-    #    'u_form': u_form,
-     #   'p_form' : p_form
-    #}
-    return render(request = request,
-                  template_name= "registration/profile.html",
+@login_required
+def profile_update(request):
+    if request.method == "POST":
+        u_form = UserUpdateForm(request.POST, instance=request.user)
+        p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            messages.success(request, f"Your profile updated successfully")
+            return redirect('profile')
+
+    else:
+        u_form = UserUpdateForm(request.POST, instance=request.user)
+        p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+
+    context = {
+        'u_form': u_form,
+        'p_form': p_form
+    }
+    return render(request,
+                  'registration/profile_update.html',
+                   context
                   )
 

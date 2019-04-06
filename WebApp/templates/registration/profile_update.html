@@ -12,9 +12,19 @@
           <p class="text-secondary">E-mail : {{ user.email }}</p>
             <p class="text-secondary">First Name : {{ user.first_name }}</p>
             <p class="text-secondary">Last Name : {{ user.last_name }}</p>
-              <a href="{% url 'profile_update' %}">Click Here To Update</a>
         </div>
 </center>
       <!-- FORM HERE -->
+    <form method="POST" enctype="multipart/form-data">
+
+        {% csrf_token %}
+        <fieldset class="form-group">
+        {{ u_form|crispy }}
+        {{ p_form|crispy }}
+        </fieldset>
+        <button style="background-color:darkcyan; color:greenyellow" class="btn btn-outline-info" type="submit">Update</button>
+<br><br>
+
+    </form>
     </div>
 {% endblock content %}

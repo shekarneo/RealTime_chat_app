@@ -1,8 +1,5 @@
 {%  extends 'webapp/header.html' %}
 
-{% load static %}
-<!-- Prism CSS -->
-<link href="{% static "tinymce/css/prism.css" %}" rel="stylesheet">
 </head>
 <body>
 
@@ -10,7 +7,7 @@
 
 {% for Post in Post %}
 
-<p>{{ Post.title }}</p>
+<a href="{% url 'post-detail' Post.id %}">{{ Post.title }}</a>
 <p>{{ Post.created_date }}</p>
 <p>{{ Post.published_date }}</p>
 <p>{{ Post.content | safe}}</p>
@@ -19,6 +16,4 @@
 {% endfor %}
 {% endblock %}
 
-<!-- Prism JS -->
-<script src="{% static "tinymce/js/prism.js" %}"></script>
 </body>

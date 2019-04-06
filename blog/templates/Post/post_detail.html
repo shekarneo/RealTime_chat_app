@@ -1,0 +1,16 @@
+{%  extends 'webapp/header.html' %}
+
+</head>
+<body>
+
+{% block content %}
+
+<H2>{{ object.title }}</H2>
+<p>{{ object.created_date }}</p>
+<p>{{ object.published_date }}</p>
+<p>{{ object.content | safe}}</p>
+<br><br>
+
+{% endblock %}
+
+</body>
