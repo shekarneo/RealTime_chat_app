@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, render, redirect
-from django.http import HttpResponse
+#from django.http import HttpResponse
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
@@ -39,6 +39,7 @@ def register(request):
 
 @login_required
 def profile(request):
+
     return render(request,
                   'registration/profile.html'
                   )
@@ -64,7 +65,5 @@ def profile_update(request):
         'p_form': p_form
     }
     return render(request,
-                  'registration/profile_update.html',
-                   context
-                  )
+                  'registration/profile_update.html', context)
 

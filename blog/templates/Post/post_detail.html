@@ -4,11 +4,14 @@
 <body>
 
 {% block content %}
-
+<div>
 <H2>{{ object.title }}</H2>
+    </div>
+    <div>
 <p>{{ object.created_date }}</p>
 <p>{{ object.published_date }}</p>
-<p>{{ object.content | safe}}</p>
+    </div>
+    <h2>Post-Content </h2><p> {{ object.content | safe}}</h2>
 <br><br>
 
 {% endblock %}

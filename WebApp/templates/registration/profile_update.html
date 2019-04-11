@@ -1,7 +1,6 @@
 {% extends "webapp/header.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-     <center>
     <div class="content-section">
 
       <div class="media">
@@ -13,7 +12,6 @@
             <p class="text-secondary">First Name : {{ user.first_name }}</p>
             <p class="text-secondary">Last Name : {{ user.last_name }}</p>
         </div>
-</center>
       <!-- FORM HERE -->
     <form method="POST" enctype="multipart/form-data">
 
