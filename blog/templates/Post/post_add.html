@@ -1,0 +1,18 @@
+{% extends 'webapp/header.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <h2>Hello {{ user.username }}</h2>
+        <br>
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class=""border-bottom mb-4'> Create Post </legend>
+            {{ form|crispy }}
+
+        </fieldset>
+<br>
+                <button style="background-color:darkcyan; color:blue" class="btn btn-outline-info" type="submit">Add</button>
+
+    </form>
+
+{% endblock %}

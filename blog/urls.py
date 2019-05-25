@@ -14,13 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path, include
-from .views import PostListView, PostDetailView, PostDeleteView
+from .views import PostDetailView, PostDeleteView
+from . import views
 
 
 urlpatterns = [
 
-    path('blog/', PostListView.as_view(), name="Post"),
+    path('blog/add', views.add_post, name="add_post"),
+    path('blog/', views.blog_post, name="Post"),
     path('blog/<int:pk>/', PostDetailView.as_view(), name="post-detail"),
-    path('blog/<int:pk>/delete/', PostDeleteView.as_view(), name="post-delete"),
+    #path('blog/<int:pk>/delete/', PostDeleteView.as_view(), name="post-delete"),
 
 ]
