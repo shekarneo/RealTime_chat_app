@@ -4,6 +4,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
+from WebApp.userlist import get_all_logged_in_users
 
 #create your views here
 
@@ -12,6 +13,7 @@ app_name = 'WebApp'
 
 def index(request):
     return render(request, 'webapp/home.html')
+
 
 def register(request):
     if request.method == "POST":
@@ -67,3 +69,9 @@ def profile_update(request):
     return render(request,
                   'registration/profile_update.html', context)
 
+
+def user_list(request):
+    return render(request=request,
+                  template_name='webapp/home.html',
+                  context={'users': get_all_logged_in_users}
+    )
